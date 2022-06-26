@@ -1,0 +1,45 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://src/actors/enemy.gd" type="Script" id=1]
+[ext_resource path="res://assets/enemy.png" type="Texture" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 38.7656, 35.0737 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 35.0737, 7.38393 )
+
+[node name="enemy" type="KinematicBody2D"]
+position = Vector2( 0, 12 )
+scale = Vector2( 0.541717, 0.541717 )
+collision_layer = 2
+collision_mask = 9
+script = ExtResource( 1 )
+speed = Vector2( 250, 1000 )
+gravity = 4000.0
+
+[node name="enemy" type="Sprite" parent="."]
+position = Vector2( 0, -62.7634 )
+scale = Vector2( 0.348136, 0.362344 )
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, -57.2255 )
+shape = SubResource( 1 )
+
+[node name="VisibilityEnabler2D" type="VisibilityEnabler2D" parent="."]
+position = Vector2( 21.1708, 11.0759 )
+scale = Vector2( 2.12868, 3.32277 )
+rect = Rect2( -30, -30, 40, 20 )
+process_parent = true
+physics_process_parent = true
+
+[node name="pounddetector" type="Area2D" parent="."]
+modulate = Color( 0.0392157, 0.0431373, 0.545098, 1 )
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pounddetector"]
+position = Vector2( 0, -101.529 )
+shape = SubResource( 2 )
+
+[connection signal="body_entered" from="pounddetector" to="." method="_on_pounddetector_body_entered"]

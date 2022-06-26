@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Button.gd" type="Script" id=1]
+[ext_resource path="res://assets/hit.wav" type="AudioStream" id=2]
+
+[node name="Node" type="Node"]
+
+[node name="Button" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -90.0
+margin_top = -53.0
+margin_right = 91.0
+margin_bottom = 53.0
+text = "press for sound"
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="hit" type="AudioStreamPlayer2D" parent="Button"]
+stream = ExtResource( 2 )
+
+[connection signal="button_up" from="Button" to="Button" method="_on_Button_button_up"]

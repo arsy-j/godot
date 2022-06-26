@@ -1,0 +1,91 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://src/screens/endscreen.gd" type="Script" id=1]
+[ext_resource path="res://assets/background2.png" type="Texture" id=2]
+[ext_resource path="res://assets/ui_theme.tres" type="Theme" id=3]
+[ext_resource path="res://src/ui/changescene.tscn" type="PackedScene" id=4]
+[ext_resource path="res://src/ui/gametitle.tscn" type="PackedScene" id=5]
+[ext_resource path="res://src/ui/quit.tscn" type="PackedScene" id=6]
+
+[node name="endscreen" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 3 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="background" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="menu" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -92.0
+margin_top = -12.0
+margin_right = 92.0
+margin_bottom = 140.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="play" parent="menu" instance=ExtResource( 4 )]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 0.0
+margin_top = 0.0
+margin_right = 184.0
+margin_bottom = 74.0
+text = "MAIN LAGI"
+next_scene_path = "res://src/screens/mainscreen.tscn"
+
+[node name="quit" parent="menu" instance=ExtResource( 6 )]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 0.0
+margin_top = 78.0
+margin_right = 184.0
+margin_bottom = 152.0
+
+[node name="gametitle" parent="." instance=ExtResource( 5 )]
+modulate = Color( 0, 0, 0, 1 )
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = -233.5
+margin_top = -114.0
+margin_right = 233.5
+margin_bottom = -86.0
+text = "TERIMA KASIH TELAH MENCOBA "
+
+[node name="Label" type="Label" parent="."]
+modulate = Color( 0, 0, 0, 1 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -129.0
+margin_top = -76.0
+margin_right = 129.0
+margin_bottom = -21.0
+text = "skor akhir : %s
+tewas : %s"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="button_up" from="menu/play" to="menu/play" method="_on_button_up"]
+[connection signal="button_up" from="menu/quit" to="menu/quit" method="_on_button_up"]

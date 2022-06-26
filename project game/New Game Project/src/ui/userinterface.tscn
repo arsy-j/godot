@@ -1,0 +1,165 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://assets/ui_theme.tres" type="Theme" id=1]
+[ext_resource path="res://src/ui/changescene.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/ui/retry.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/ui/quit.tscn" type="PackedScene" id=4]
+[ext_resource path="res://src/ui/gametitle.tscn" type="PackedScene" id=5]
+[ext_resource path="res://src/ui/userinterface.gd" type="Script" id=6]
+[ext_resource path="res://assets/arrow-right.png" type="Texture" id=7]
+[ext_resource path="res://assets/arrow-up.png" type="Texture" id=8]
+[ext_resource path="res://assets/arrow-left.png" type="Texture" id=9]
+[ext_resource path="res://assets/arrow-up_pressed.png" type="Texture" id=10]
+[ext_resource path="res://assets/arrow-right_pressed.png" type="Texture" id=11]
+[ext_resource path="res://assets/arrow-left_pressed.png" type="Texture" id=12]
+[ext_resource path="res://assets/pause-button.png" type="Texture" id=13]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 25, 35 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 310, 250 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 300, 450 )
+
+[node name="userinterface" type="Control"]
+pause_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource( 1 )
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="score" type="Label" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -311.944
+margin_top = 31.0
+margin_right = -148.944
+margin_bottom = 63.0
+text = "score : %s"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="pause" type="TouchScreenButton" parent="."]
+modulate = Color( 1, 1, 1, 0.392157 )
+position = Vector2( 446, 0 )
+scale = Vector2( 1, 0.838235 )
+normal = ExtResource( 13 )
+shape = SubResource( 1 )
+action = "pause"
+visibility_mode = 1
+
+[node name="left" type="TouchScreenButton" parent="."]
+pause_mode = 1
+modulate = Color( 1, 1, 1, 0.392157 )
+position = Vector2( 40, 443 )
+scale = Vector2( 0.240698, 0.239293 )
+normal = ExtResource( 9 )
+pressed = ExtResource( 12 )
+shape = SubResource( 2 )
+passby_press = true
+action = "move_left"
+visibility_mode = 1
+
+[node name="right" type="TouchScreenButton" parent="."]
+pause_mode = 1
+modulate = Color( 1, 1, 1, 0.392157 )
+position = Vector2( 208, 443 )
+scale = Vector2( 0.240698, 0.239293 )
+normal = ExtResource( 7 )
+pressed = ExtResource( 11 )
+shape = SubResource( 2 )
+passby_press = true
+action = "move_right"
+visibility_mode = 1
+
+[node name="up" type="TouchScreenButton" parent="."]
+pause_mode = 1
+modulate = Color( 1, 1, 1, 0.392157 )
+position = Vector2( 768, 474 )
+scale = Vector2( 0.312179, 0.140102 )
+normal = ExtResource( 8 )
+pressed = ExtResource( 10 )
+shape = SubResource( 3 )
+action = "jump"
+visibility_mode = 1
+
+[node name="pause overlay" type="ColorRect" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.184314 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="pause2" type="TouchScreenButton" parent="pause overlay"]
+modulate = Color( 1, 1, 1, 0.392157 )
+position = Vector2( 446, 0 )
+scale = Vector2( 1, 0.838235 )
+normal = ExtResource( 13 )
+shape = SubResource( 1 )
+action = "pause"
+visibility_mode = 1
+
+[node name="title" parent="pause overlay" instance=ExtResource( 5 )]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = -137.0
+margin_top = -111.0
+margin_right = 137.0
+margin_bottom = -45.0
+text = "JEDA"
+
+[node name="pauseui" type="VBoxContainer" parent="pause overlay"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -137.0
+margin_top = -45.0
+margin_right = 137.0
+margin_bottom = 143.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="changescene" parent="pause overlay/pauseui" instance=ExtResource( 2 )]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 0.0
+margin_top = 0.0
+margin_right = 274.0
+margin_bottom = 60.0
+text = "MENU UTAMA"
+next_scene_path = "res://src/screens/mainscreen.tscn"
+
+[node name="retry" parent="pause overlay/pauseui" instance=ExtResource( 3 )]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 0.0
+margin_top = 64.0
+margin_right = 274.0
+margin_bottom = 124.0
+
+[node name="quit" parent="pause overlay/pauseui" instance=ExtResource( 4 )]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 0.0
+margin_top = 128.0
+margin_right = 274.0
+margin_bottom = 188.0

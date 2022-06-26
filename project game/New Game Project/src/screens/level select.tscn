@@ -1,0 +1,103 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/background2.png" type="Texture" id=1]
+[ext_resource path="res://src/ui/changescene.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/ui_theme.tres" type="Theme" id=3]
+
+[node name="level select" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 243.602, 244.426 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="background" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 1 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="changescene" parent="." instance=ExtResource( 2 )]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 39.0
+margin_top = 47.0
+margin_right = 155.0
+margin_bottom = 97.0
+theme = ExtResource( 3 )
+text = "KEMBALI"
+next_scene_path = "res://src/screens/mainscreen.tscn"
+
+[node name="menu" type="VBoxContainer" parent="."]
+pause_mode = 2
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -111.5
+margin_top = -117.5
+margin_right = 111.5
+margin_bottom = 117.5
+theme = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="select" parent="menu" instance=ExtResource( 2 )]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 0.0
+margin_top = 0.0
+margin_right = 223.0
+margin_bottom = 55.0
+text = "LEVEL 1"
+next_scene_path = "res://src/level/level 1.tscn"
+
+[node name="select2" parent="menu" instance=ExtResource( 2 )]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 0.0
+margin_top = 59.0
+margin_right = 223.0
+margin_bottom = 115.0
+text = "LEVEL 2"
+next_scene_path = "res://src/level/level 2.tscn"
+
+[node name="select3" parent="menu" instance=ExtResource( 2 )]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 0.0
+margin_top = 119.0
+margin_right = 223.0
+margin_bottom = 175.0
+text = "LEVEL 3"
+next_scene_path = "res://src/level/level 3.tscn"
+
+[node name="select4" parent="menu" instance=ExtResource( 2 )]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 0.0
+margin_top = 179.0
+margin_right = 223.0
+margin_bottom = 235.0
+text = "LEVEL 4"
+next_scene_path = "res://src/level/level 4.tscn"
+
+[connection signal="button_up" from="menu/select" to="menu/select" method="_on_play_button_up"]
+[connection signal="button_up" from="menu/select2" to="menu/select2" method="_on_play_button_up"]
+[connection signal="button_up" from="menu/select3" to="menu/select3" method="_on_play_button_up"]
+[connection signal="button_up" from="menu/select4" to="menu/select4" method="_on_play_button_up"]

@@ -1,0 +1,95 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://src/ui/gametitle.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/ui/changescene.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/ui/quit.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/background2.png" type="Texture" id=4]
+[ext_resource path="res://assets/ui_theme.tres" type="Theme" id=5]
+
+[node name="mainscreen" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false,
+"_edit_vertical_guides_": [ 1024.0 ]
+}
+
+[node name="background" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 4 )
+expand = true
+stretch_mode = 1
+flip_h = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="background"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -152.0
+margin_top = -32.0
+text = "MADE BY AR-J"
+
+[node name="gametitle" parent="." instance=ExtResource( 1 )]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = -137.0
+margin_top = -91.0
+margin_right = 137.0
+margin_bottom = -54.0
+text = "GAME"
+
+[node name="menu" type="VBoxContainer" parent="."]
+pause_mode = 2
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -76.0
+margin_top = -47.0
+margin_right = 76.0
+margin_bottom = 105.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="play" parent="menu" instance=ExtResource( 2 )]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 0.0
+margin_top = 0.0
+margin_right = 152.0
+margin_bottom = 48.0
+next_scene_path = "res://src/level/level 1.tscn"
+
+[node name="select" parent="menu" instance=ExtResource( 2 )]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 0.0
+margin_top = 52.0
+margin_right = 152.0
+margin_bottom = 100.0
+text = "PILIH LEVEL"
+next_scene_path = "res://src/screens/level select.tscn"
+
+[node name="quit" parent="menu" instance=ExtResource( 3 )]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 0.0
+margin_top = 104.0
+margin_right = 152.0
+margin_bottom = 152.0
+
+[connection signal="button_up" from="menu/play" to="menu/play" method="_on_play_button_up"]
+[connection signal="button_up" from="menu/select" to="menu/select" method="_on_play_button_up"]
